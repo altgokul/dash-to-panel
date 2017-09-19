@@ -29,6 +29,7 @@ const Gio = imports.gi.Gio;
 const Lang = imports.lang;
 const Shell = imports.gi.Shell;
 const WindowManager = imports.ui.windowManager;
+const disableHotCorner = Me.imports.disableHotCorner;
 
 let panel;
 let overview;
@@ -39,6 +40,7 @@ function init() {
 }
 
 function enable() {
+	disableHotCorner.enable();
     settings = Convenience.getSettings('org.gnome.shell.extensions.dash-to-panel');  
     panel = new Panel.dtpPanel(settings);
     panel.enable();
@@ -83,4 +85,5 @@ function disable() {
                            Shell.ActionMode.NORMAL |
                            Shell.ActionMode.POPUP,
                            Lang.bind(Main.wm, Main.wm._toggleAppMenu));
+	disableHotCorner.disable();
 }

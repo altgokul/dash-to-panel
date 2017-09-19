@@ -11,6 +11,8 @@ My modification of [Dash to panel](https://github.com/jderose9/dash-to-panel).
 
 Dash to Panel [Dash to panel](https://github.com/jderose9/dash-to-panel).
 
+Idea and code for disabling hotcorner is from [nohotcorner](https://github.com/HROMANO/nohotcorner/)
+
 Original Credits:
 
 Much of the code in this extension comes from [Dash-to-Dock](https://micheleg.github.io/dash-to-dock/index.html).
