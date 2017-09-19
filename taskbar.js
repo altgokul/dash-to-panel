@@ -221,7 +221,7 @@ const taskbar = new Lang.Class({
 
         let rtl = Clutter.get_default_text_direction() == Clutter.TextDirection.RTL;
         this.actor = new St.Bin({ child: this._container,
-            y_align: St.Align.START, x_align:rtl?St.Align.END:St.Align.START
+            y_align: St.Align.START, x_align:rtl?St.Align.END:St.Align.MIDDLE
         });
 
         Main.panel.actor.connect('notify::height', Lang.bind(this,

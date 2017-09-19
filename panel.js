@@ -58,7 +58,7 @@ const dtpPanel = new Lang.Class({
 
     enable : function() {
         this.panel = Main.panel;
-        this.container = this.panel._leftBox;
+        this.container = this.panel._centerBox;
         this.appMenu = this.panel.statusArea.appMenu;
         this.panelBox = Main.layoutManager.panelBox;
         
@@ -302,7 +302,7 @@ const dtpPanel = new Lang.Class({
         let [centerMinWidth, centerNaturalWidth] = this.panel._centerBox.get_preferred_width(-1);
         let [rightMinWidth, rightNaturalWidth] = this.panel._rightBox.get_preferred_width(-1);
 
-        let sideWidth = allocWidth - rightNaturalWidth - centerNaturalWidth;
+        let sideWidth = allocWidth - rightNaturalWidth - leftNaturalWidth; //centerNaturalWidth;
 
         let childBox = new Clutter.ActorBox();
 
@@ -313,7 +313,7 @@ const dtpPanel = new Lang.Class({
             childBox.x2 = allocWidth;
         } else {
             childBox.x1 = 0;
-            childBox.x2 = sideWidth;
+            childBox.x2 = leftNaturalWidth-1; //sideWidth;
         }
         this.panel._leftBox.allocate(childBox, flags, true);
 
@@ -323,7 +323,7 @@ const dtpPanel = new Lang.Class({
             childBox.x1 = rightNaturalWidth;
             childBox.x2 = childBox.x1 + centerNaturalWidth;
         } else {
-            childBox.x1 = allocWidth - centerNaturalWidth - rightNaturalWidth;
+            childBox.x1 = allocWidth/2 - centerNaturalWidth/2; // - rightNaturalWidth;
             childBox.x2 = childBox.x1 + centerNaturalWidth;
         }
         this.panel._centerBox.allocate(childBox, flags, true);
