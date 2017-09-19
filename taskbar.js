@@ -112,15 +112,15 @@ const taskbarActor = new Lang.Class({
         let [showAppsMinWidth, showAppsNatWidth] = showAppsButton.get_preferred_width(availHeight);
 
         let childBox = new Clutter.ActorBox();
-        childBox.x1 = contentBox.x1 + showAppsNatWidth;
+        childBox.x1 = contentBox.x1; // + showAppsNatWidth;
         childBox.y1 = contentBox.y1;
-        childBox.x2 = contentBox.x2;
+        childBox.x2 = contentBox.x2 - showAppsNatWidth;
         childBox.y2 = contentBox.y2;
         appIcons.allocate(childBox, flags);
 
+        childBox.x1 = contentBox.x2 - showAppsNatWidth;
         childBox.y1 = contentBox.y1;
-        childBox.x1 = contentBox.x1;
-        childBox.x2 = contentBox.x1 + showAppsNatWidth;
+        childBox.x2 = contentBox.x2;
         childBox.y2 = contentBox.y2;
         showAppsButton.allocate(childBox, flags);
     },
